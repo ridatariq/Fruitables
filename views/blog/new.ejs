@@ -1,0 +1,27 @@
+
+<% include ../partials/header1 %>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/landing.css' />
+<% include ../partials/header2 %>
+
+<section id="one">
+<div class="ui main text container segment">
+    <div class="ui huge header">New Blog</div>
+    <form class="ui form" action="/blog/" method="post">
+        <div class="field">
+            <label for="">Title</label>
+            <input type="text" name="blog[title]" placeholder="Blog Title">
+        </div>
+        <div class="field">
+            <label for="">Image</label>
+            <input type="text" name="blog[image]" placeholder="Image">
+        </div>
+        <div class="field">
+            <label for="">Content</label>
+            <textarea name="blog[body]" id="" cols="30" rows="10"></textarea>
+        </div>
+        <input type="submit" class="button special">
+    </form>
+</div>
+</section>
+<% include ../partials/footer %>

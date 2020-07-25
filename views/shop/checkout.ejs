@@ -1,0 +1,84 @@
+<% include ../partials/header1 %>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/landing.css' />
+    <link rel='stylesheet' href='/stylesheets/w3.css' />
+<% include ../partials/header2 %>
+
+
+
+<section id="one">
+        <div class="inner">
+            <header class="align-center">
+                <h2>Checkout</h2>
+            </br> <hr />
+                <h3>Your Total: $<%= total%></h3>
+            </header>
+            <div id="charge-error" class="alert alert-danger <% if(noError) { %>hidden<% } %>">
+                <%= errMsg %>
+            </div>
+            <form action="/checkout" method="post" id="checkout-form">
+                <div class="inner">
+                    <div class="col-xs-12">
+                      <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" class="form-control" required name="name" placeholder="John Doe">
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input type="text" id="address" class="form-control" required name="address" placeholder="House #, Street #, Block #, Area">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="card-name">Card Holder Name</label>
+                            <input type="text" id="card-name" placeholder="John Doe" class="form-control" required >
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="card-number">Credit Card Number</label>
+                            <input type="text" id="card-number" placeholder="1111222233334444" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="card-expiry-month">Expiration Month</label>
+                                    <input type="text" id="card-expiry-month" placeholder="04" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="card-expiry-year">Expiration Year</label>
+                                    <input type="text" id="card-expiry-year" placeholder="2020" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="card-cvc">CVC</label>
+                            <input type="text" id="card-cvc" placeholder="123" class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+                <center>
+                  <div>
+                <button type="submit" onclick="myFunction()" class="button good">Buy now</button>
+                <div id="snackbar">Processing Payment...</div>
+            </div>
+            </center>
+            </form>
+        </div>
+    </section>
+
+
+
+    <script type="text/javascript" src="javascripts/button.js"></script>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript" src="javascripts/checkout.js"></script>
+<% include ../partials/footer %>

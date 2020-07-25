@@ -1,0 +1,101 @@
+<% include ../partials/header1 %>
+    <link rel='stylesheet' href='/stylesheets/landing.css' />
+    <link rel='stylesheet' href='/stylesheets/w3.css' />
+<% include ../partials/header2 %>
+
+<section id="one">
+  <div class="inner">
+  <style>
+    #map{
+      height:400px;
+      width:100%;
+    }
+  </style>
+ <header class="align-center">
+  <h2>Store Locator</h2>
+</br> <hr />
+ </header>
+  <div id="map"></div>
+  <script>
+    function initMap(){
+      var options = {
+        zoom:8,
+        center:{lat:24.9023,lng:67.1892}
+      }
+      var map = new google.maps.Map(document.getElementById('map'), options);
+
+      
+      google.maps.event.addListener(map, 'click', function(event){
+      
+        addMarker({coords:event.latLng});
+      });
+
+      
+      var markers = [
+        {
+          coords:{lat:24.9023,lng:67.1892},
+          iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+          content:'<h1>Main Karachi Store</h1>'
+        },
+        {
+          coords:{lat:24.9023,lng:68.1892},
+          content:'<h1>Makli</h1>'
+        },
+        {
+          coords:{lat:24.9023,lng:67.2892},
+          content:'<h1>Karachi Store</h1>'
+        },
+        {
+          coords:{lat:24.3023,lng:67.3892},
+          content:'<h1>Karachi Store 2</h1>'
+        },
+        {
+          coords:{lat:24.9023,lng:69.1892}
+        }
+      ];
+
+      // Loop through markers
+      for(var i = 0;i < markers.length;i++){
+        // Add marker
+        addMarker(markers[i]);
+      }
+
+      // Add Marker Function
+      function addMarker(props){
+        var marker = new google.maps.Marker({
+          position:props.coords,
+          map:map,
+          //icon:props.iconImage
+        });
+
+        // Check for customicon
+        if(props.iconImage){
+          // Set icon image
+          marker.setIcon(props.iconImage);
+        }
+
+        // Check content
+        if(props.content){
+          var infoWindow = new google.maps.InfoWindow({
+            content:props.content
+          });
+
+          marker.addListener('click', function(){
+            infoWindow.open(map, marker);
+          });
+        }
+      }
+    }
+  </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_wNVJcDcLMkpU34QH8RloXjXfIWNkrV4&callback=initMap">
+    </script>
+    </div>
+  </section>
+</body>
+</html>
+
+<script type="text/javascript" src="javascripts/button.js"></script>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript" src="javascripts/checkout.js"></script>
+<% include ../partials/footer %>

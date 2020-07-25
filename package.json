@@ -1,0 +1,35 @@
+{
+  "name": "cart",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "async": "^3.1.0",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.3",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^3.1.2",
+    "cookie-parser": "~1.4.3",
+    "csurf": "^1.9.0",
+    "debug": "~2.6.9",
+    "ejs": "~2.5.7",
+    "ejs-lint": "^0.3.0",
+    "express": "~4.16.0",
+    "express-sanitizer": "^1.0.5",
+    "express-session": "^1.15.6",
+    "express-validator": "^5.3.1",
+    "http-errors": "~1.6.2",
+    "lightbox2": "^2.11.1",
+    "method-override": "^3.0.0",
+    "moment": "^2.24.0",
+    "mongoose": "^5.4.22",
+    "morgan": "~1.9.0",
+    "nodemailer": "^6.1.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "randomstring": "^1.1.5",
+    "stripe": "^6.28.0"
+  }
+}

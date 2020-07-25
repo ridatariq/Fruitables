@@ -1,0 +1,41 @@
+<% include ../partials/header1 %>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/landing.css' />
+<% include ../partials/header2 %>
+
+
+<section id="one">
+        <div class="inner">
+           
+            <header class="align-center">
+                <h2>Order History</h2>
+            </header>
+        </br> <hr \>
+ 
+        <h2>My Order</h2>
+        <% orders.forEach(function(items){%>
+        <div class="panel panel-default" style="color: black;">
+            <div class="panel-body">
+            <ul class="list-group">
+                <% items.items.forEach(function(item) { %>
+                    <li class="list-group-item">
+                        <span class="badge">$ <%= item.price%></span>
+                    <strong>  <%= item.item.title%> |</strong> <%= item.qty%> Units
+                    </li> 
+                <% }) %>
+                <li class="list-group-item">
+                    <strong>Address: </strong> <%= items.address %>
+                </li>
+            </ul>
+            </div>
+            <div class="panel-footer">
+                <strong>Total Price: $ <%=items.cart.totalPrice%></strong>
+            </div>
+        </div>
+        <%});%>
+        </div>
+      
+    </section>
+
+
+<% include ../partials/footer %>

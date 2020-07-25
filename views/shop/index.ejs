@@ -1,0 +1,99 @@
+<% include ../partials/header1 %>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/landing.css' />
+    <link rel='stylesheet' href='/stylesheets/w3.css' />
+<% include ../partials/header2 %>
+
+<section id="one">
+<header class="align-center">
+    <div class="inner">
+        <div id="success" class="alert alert-success <% if(noMessages) { %>hidden<% } %>">
+            <%= successMsg %>
+    </div>
+<h1>Items</h1>
+
+</br> <hr /></div>
+    </header>
+</section>
+
+<style>
+     body 
+     {
+          background-image: url('../../images/90.jpg');
+          background-size: cover;
+        }
+        .grid 
+        { 
+          display: grid;
+          grid-template-columns: repeat(3, minmax(200px, 1fr));
+          grid-gap: 20px;
+          align-items: stretch;
+          }
+        .grid img 
+        {
+          border: 1px solid #ccc;
+          box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
+          max-width: 100%;
+        }
+</style>
+<script>
+        function onClick(element) {
+          document.getElementById("img01").src = element.src;
+          document.getElementById("modal01").style.display = "block";
+        }
+        </script>
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+        <center>
+            
+        <main class="grid">
+                <div ></div>
+            <div class="column">
+            <%  products.forEach(function(foods) { %>        
+                    <% foods.forEach(function(food) { %>
+                      
+                        <div class="thumbnail">
+                             <div class="w3-container">
+                            <img src="<%= food.imagePath %>" alt="..." class="img-responsive" style="cursor:zoom-in" onclick="onClick(this)">
+                        </div>
+                            <div id="modal01" class="w3-modal" onclick="this.style.display='none'">
+                                    <div class="w3-modal-content w3-animate-zoom">
+                                    <img class="w3-modal-content" src="<%= food.imagePath %>" id="img01" style="width: 100%;">           
+                                </div>
+                                <span class="button special pull-top-right ">&times;</span>
+                                </div>  
+                            
+                            <div class="caption">
+                                    <a href="/<%= food._id %>/show"><h3><%= food.title%></h3></a>
+                                        <p class="description">
+                                            <%= food.description %>
+                                        </p>
+                             
+                                        <div class="clearfix">                                     
+                                            <div class="price pull-left"><h4>$<%= food.price %></h4>
+                                            </div>
+                                                <% if(session.admin) { %>
+                                                <a href="/<%= food._id%>/edit" class="button default pull-right">Edit</a>
+                                                <form id="delete" action="/<%= food._id%>?_method=DELETE" method="POST">
+                                                    <button class="button special pull-right">Delete</button>
+                                                </form>
+                                                <% } %>
+                                            <a href="/add-to-cart/<%= food._id %>" class="button alt icon fa-cart-plus pull-right" role="button">Order</a>
+                                        
+                            </br> <hr /> </br>
+                            </div>
+                        
+                    </div>
+          
+            
+   
+
+        </div>
+     <% });%>
+   
+<% });%>
+</div>
+        </main>
+    </center>
+   
+
+<% include ../partials/footer %>

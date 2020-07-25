@@ -1,0 +1,30 @@
+<% include ../partials/header1 %>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/landing.css' />
+<% include ../partials/header2 %>
+<section id="one">
+
+<div class="ui main text container segment">
+    <div class="ui huge header">New Food</div>
+    <form class="ui form" action="/new" method="post">
+        <div class="field">
+            <label for="">Image</label>
+            <input type="text" name="product[imagePath]" placeholder="Image Path">
+        </div>
+        <div class="field">
+            <label for="">Title</label>
+            <input type="text" name="product[title]" placeholder="Title">
+        </div>
+        <div class="field">
+            <label for="">Description</label>
+            <textarea name="product[description]" id="" cols="30" rows="10"></textarea>
+        </div>
+        <div class="field">
+            <label for="">Price</label>
+            <input type="number" step=".01" name="product[price]" placeholder="Price">
+        </div>
+        <input type="submit" class="ui secondary button">
+    </form>
+</div>
+</section>
+<% include ../partials/footer %>

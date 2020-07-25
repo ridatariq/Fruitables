@@ -1,0 +1,30 @@
+<% include ../partials/header1 %>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/landing.css' />
+<% include ../partials/header2 %>
+<section id="one">
+<div class="ui main text container segment">
+    <div class="ui huge header awein"><%= blog.title %></div>
+    <div class="ui top attached">
+        <div class="item">
+            <img src="<%= blog.image%>" class="ui centered rounded image">
+            <div class="content">
+                <span><%= blog.created.toDateString()%></span>
+            </div>
+            <div class="description">
+                <p><%- blog.body%></p>
+            </div>
+            <br>
+            <% if (session.admin) { %>
+            <a href="/blog/<%= blog._id%>/edit" class="button alt">Edit<a></a>
+            <% } %>
+            <% if (session.admin) { %>
+            <form id="delete" action="/blog/<%= blog._id%>?_method=DELETE" method="POST">
+                <button class="button special">Delete</button>
+            </form>
+            <% } %>
+        </div>
+    </div>
+</div>
+</section>
+<% include ../partials/footer %>

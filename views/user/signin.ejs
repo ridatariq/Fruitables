@@ -1,0 +1,48 @@
+<% include ../partials/header1 %>
+<title><%= title %></title>
+<link rel="stylesheet" href="/stylesheets/landing.css" />
+<% include ../partials/header2 %>
+
+<section id="one">
+  <div class="inner">
+    <% if(hasErrors) { %>
+    <div class="alert alert-danger">
+      <% messages.forEach(function(message) { %>
+      <p><%= message %></p>
+      <% });%>
+    </div>
+    <%}%>
+    <header>
+      <h2>Login</h2>
+    </header>
+
+    <form action="/user/signin" method="post">
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input
+          type="text"
+          name="email"
+          id="name"
+          class="form-control"
+          placeholder="abc@example.com"
+        />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          class="form-control"
+          placeholder="Password"
+        />
+      </div>
+
+      <button type="submit" class="button alt">Log in</button>
+    </form>
+    <p><a href="/user/forget">Forgot Password?</a></p>
+    <p>Don't have an account? <a href="/user/signup">Sign up instead!</a></p>
+  </div>
+</section>
+
+<% include ../partials/footer %>

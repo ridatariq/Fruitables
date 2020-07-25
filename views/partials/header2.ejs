@@ -1,0 +1,44 @@
+</head>
+<body>
+        <header id="header">
+				<div class="inner">
+					<a href="\" class="logo">Fruitables</a>
+					<nav id="nav">          
+                       <a href="\menu">Items</a> 
+                       <a href="\check">Map</a> 
+
+                    <% if(session.admin) { %>
+                      <a href="../new">New Item</a>
+                    <% } %>
+                    <% if(!login) {%>
+                        <a href="../user/signup">Sign Up</a>
+                        <a href="../user/signin">Log In</a>                                   
+                    <%}%>
+                    <% if(login) {%>
+                   <a href="../user/profile">Orders</a>
+                   <a href="../blog">Blog</a>
+                   <a href="../blog/new">Review Item</a>
+
+                   <a href="../user/logout">Log Out</a>                    
+                    <% }%>
+                    <% if(session.cart) { %>                     
+                            <a href="/shopping-cart/">
+                                <i class=" icon special fas fa-shopping-cart small">
+                                <span class="badge"><%= session.cart.totalQty %></span></i>
+                            </a>                      
+                    <% } %>
+                    <% session.blog = false %>
+                </ul>
+            </div>					
+					</nav>
+				</div>
+			</header>
+			<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
+
+
+
+
+
+    
+    
